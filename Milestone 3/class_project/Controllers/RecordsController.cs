@@ -18,7 +18,7 @@ namespace class_project.Controllers
         // GET: Records
         public ActionResult Index()
         {
-            var records = db.Records.Include(r => r.Meet);
+            var records = db.Records.Include(r => r.Athlete).Include(r => r.Meet);
             return View(records.ToList());
         }
 
@@ -40,7 +40,8 @@ namespace class_project.Controllers
         // GET: Records/Create
         public ActionResult Create()
         {
-            ViewBag.MeetID = new SelectList(db.Meets, "ID", "Location");
+            ViewBag.AthleteID = new SelectList(db.Athletes, "ID", "FirstName");
+            ViewBag.MeetID = new SelectList(db.Meets, "ID", "MeetDate");
             return View();
         }
 
@@ -49,7 +50,7 @@ namespace class_project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RaceTime,MeetID")] Record record)
+        public ActionResult Create([Bind(Include = "ID,RaceTime,AthleteID,MeetID")] Record record)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +59,8 @@ namespace class_project.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MeetID = new SelectList(db.Meets, "ID", "Location", record.MeetID);
+            ViewBag.AthleteID = new SelectList(db.Athletes, "ID", "FirstName", record.AthleteID);
+            ViewBag.MeetID = new SelectList(db.Meets, "ID", "MeetDate", record.MeetID);
             return View(record);
         }
 
@@ -74,7 +76,8 @@ namespace class_project.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MeetID = new SelectList(db.Meets, "ID", "Location", record.MeetID);
+            ViewBag.AthleteID = new SelectList(db.Athletes, "ID", "FirstName", record.AthleteID);
+            ViewBag.MeetID = new SelectList(db.Meets, "ID", "MeetDate", record.MeetID);
             return View(record);
         }
 
@@ -83,7 +86,7 @@ namespace class_project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RaceTime,MeetID")] Record record)
+        public ActionResult Edit([Bind(Include = "ID,RaceTime,AthleteID,MeetID")] Record record)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +94,8 @@ namespace class_project.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MeetID = new SelectList(db.Meets, "ID", "Location", record.MeetID);
+            ViewBag.AthleteID = new SelectList(db.Athletes, "ID", "FirstName", record.AthleteID);
+            ViewBag.MeetID = new SelectList(db.Meets, "ID", "MeetDate", record.MeetID);
             return View(record);
         }
 

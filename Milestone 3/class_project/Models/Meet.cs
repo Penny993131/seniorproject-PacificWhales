@@ -18,7 +18,11 @@ namespace class_project.Models
 
         [Required]
         [StringLength(50)]
-        public string Location { get; set; }
+        public string MeetDate { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string MeetLocation { get; set; }
 
         public int AthleteID { get; set; }
 

@@ -14,7 +14,11 @@ namespace class_project.Models
         [StringLength(50)]
         public string RaceTime { get; set; }
 
+        public int AthleteID { get; set; }
+
         public int MeetID { get; set; }
+
+        public virtual Athlete Athlete { get; set; }
 
         public virtual Meet Meet { get; set; }
     }

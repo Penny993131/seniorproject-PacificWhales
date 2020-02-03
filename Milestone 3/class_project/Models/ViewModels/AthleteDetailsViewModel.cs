@@ -19,16 +19,21 @@ namespace class_project.Models.ViewModels
             CoachName = coach;
             string team = athlete.Team.TeamName;
             TeamName = team;
-            string stroke = athlete.Meets.First().Event.Stroke;
+
+           
+            /*string stroke = athlete.Meets.First().Event.Stroke;
             Stroke = stroke;
             string distance = athlete.Meets.First().Event.Distance;
-            Distance = distance;
-            string racetime = athlete.Meets.First().Records.First().RaceTime;
-            RaceTime = racetime;
-            string location = athlete.Meets.First().Location;
-            Location = location;
+             Distance = distance;
+             string racetime = athlete.Meets.First().Records.First().RaceTime;
+             RaceTime = racetime;
+             string date = athlete.Meets.First().MeetDate;
+             MeetDate = date;
+             string location = athlete.Meets.First().MeetLocation;
+             MeetLocation = location;*/
+
         }
-        public int AthleteID { get; private set; }
+    public int AthleteID { get; private set; }
         public string AthleteFirstName { get; private set; }
         public string AthleteLastName { get; private set; }
         public string CoachName { get; private set; }
@@ -36,7 +41,9 @@ namespace class_project.Models.ViewModels
         public string Stroke { get; private set; }
         public string Distance { get; private set; }
         public string RaceTime { get; private set; }
-        public string Location { get; private set; }
+        public string MeetDate { get; private set; }
+        public string MeetLocation { get; private set; }
+        
 
     }
 }

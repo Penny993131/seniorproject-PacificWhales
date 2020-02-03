@@ -9,6 +9,9 @@
             <h1>View Athlete Profile</h1>
         </div>
     </div>
+
+<div>
+    <h4>AthleteDetailsViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -76,11 +79,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.MeetDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @Html.DisplayFor(model => model.MeetDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeetLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeetLocation)
         </dd>
 
     </dl>

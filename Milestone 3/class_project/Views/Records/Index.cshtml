@@ -6,7 +6,7 @@
 
     <div class="jumbotron" style="background-color: cornflowerblue; color: white; margin-top: 20px;">
         <div class="container-fluid">
-            <h1>Athlete Record List</h1>
+            <h1>List of Athlete Records</h1>
         </div>
     </div>
 
@@ -16,7 +16,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Meet.Location)
+            @Html.DisplayNameFor(model => model.Athlete.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Meet.MeetDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RaceTime)
@@ -27,7 +30,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Meet.Location)
+            @Html.DisplayFor(modelItem => item.Athlete.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Meet.MeetDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RaceTime)

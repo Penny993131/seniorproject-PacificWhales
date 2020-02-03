@@ -9,7 +9,7 @@ namespace class_project.DAL
     public partial class ClassprojectContext : DbContext
     {
         public ClassprojectContext()
-            : base("name=ClassprojectContext1")
+            : base("name=ClassprojectContext3")
         {
         }
 
@@ -24,6 +24,11 @@ namespace class_project.DAL
         {
             modelBuilder.Entity<Athlete>()
                 .HasMany(e => e.Meets)
+                .WithRequired(e => e.Athlete)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Athlete>()
+                .HasMany(e => e.Records)
                 .WithRequired(e => e.Athlete)
                 .WillCascadeOnDelete(false);
 

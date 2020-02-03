@@ -27,18 +27,18 @@ INSERT INTO [dbo].[Events](Stroke, Distance)
     ('Backstroke', '200m'),
 	('The Butterfly', '200m');
 
-INSERT INTO [dbo].[Meets](Location, AthleteID,EventID)
+INSERT INTO [dbo].[Meets](MeetDate, MeetLocation, AthleteID,EventID)
 	VALUES
-	('WOU', 1, 1),
-	('OSU', 2, 2),
-    ('UO', 3, 3),
-	('PSU', 4, 4);
+	('01-01-2020', 'WOU', 1, 1),
+	('06-01-2020', 'OSU', 2, 2),
+    ('15-01-2020', 'UO', 3, 3),
+	('20-20-2020', 'PSU', 4, 4);
 
-INSERT INTO [dbo].[Records](RaceTime, MeetID)
+INSERT INTO [dbo].[Records](RaceTime, AthleteID, MeetID)
 	VALUES
-	('100s' , 1),
-	('210s', 2),
-    ('350s', 3),
-	('407s', 4);
+	('100s' ,1, 1),
+	('210s', 2, 2),
+    ('350s', 3, 3),
+	('407s', 4, 4);
     
     GO

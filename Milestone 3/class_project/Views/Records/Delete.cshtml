@@ -4,21 +4,31 @@
     ViewBag.Title = "Delete";
 }
 
-<div class="jumbotron" style="background-color: cornflowerblue; color: white; margin-top: 20px;">
-    <div class="container-fluid">
-        <h1>Are you sure you want to delete this?</h1>
+    <div class="jumbotron" style="background-color: cornflowerblue; color: white; margin-top: 20px;">
+        <div class="container-fluid">
+            <h1>Delete an Athlete Record</h1>
+        </div>
     </div>
-</div>
+
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Record</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Meet.Location)
+            @Html.DisplayNameFor(model => model.Athlete.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Meet.Location)
+            @Html.DisplayFor(model => model.Athlete.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Meet.MeetDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Meet.MeetDate)
         </dd>
 
         <dt>
