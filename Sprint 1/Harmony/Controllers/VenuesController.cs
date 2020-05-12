@@ -58,7 +58,9 @@ namespace Harmony
         public ActionResult Index()
         {
             var venues = db.Venues.Include(v => v.User).Include(v => v.VenueType);
+            ViewBag.success = true;
             return View(venues.ToList());
+           
         }
 
         /************************************

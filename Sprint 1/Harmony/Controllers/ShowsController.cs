@@ -73,7 +73,8 @@ namespace Harmony.Controllers
                 User venueOwner = db.Users.Where(u => u.ASPNetIdentityID == identityID).FirstOrDefault();
                 return View(db.User_Show.Where(u => u.VenueOwnerID == venueOwner.ID).Select(s => s.Show).OrderByDescending(s => s.EndDateTime).ToList());
             }
-            
+            //Add a viewbag.success
+            ViewBag.success = true;
             return View(db.Shows.ToList());
         }
 

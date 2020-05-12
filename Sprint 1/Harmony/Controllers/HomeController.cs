@@ -14,7 +14,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Harmony.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller 
     {
 
         private HarmonyContext db = new HarmonyContext();
