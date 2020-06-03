@@ -90,6 +90,21 @@ namespace Harmony
             viewModel.UpcomingShows = db.User_Show.Where(u => u.MusicianID == user.ID).Select(s => s.Show).Where(s => s.StartDateTime > DateTime.Now && s.Status == "Accepted").OrderByDescending(s => s.EndDateTime).ToList();
             viewModel.VenueList = new SelectList(db.Venues.Where(v => v.User.ASPNetIdentityID == IdentityID), "ID", "VenueName");
 
+            string profilePath = "";
+            if (user.ProfilePictureID == 1)
+            {
+                profilePath = "/Profiles/male.jpg";
+            }
+            else if (user.ProfilePictureID == 2)
+            {
+                profilePath = "/Profiles/female.jpg";
+            }
+            else if (user.ProfilePictureID == 3)
+            {
+                profilePath = "/Profiles/nonbinary.jpg";
+            }
+            ViewBag.ProfilePath = profilePath;
+
             return View(viewModel);
         }
 
@@ -189,7 +204,7 @@ namespace Harmony
                         VenueID = viewModel.VenueID,
                         Status = "Pending",
                         GoogleEventID = newEvent.Id,
-                        ShowOwnerID = db.Users.Where(u => u.ASPNetIdentityID == IdentityID).First().ID 
+                        ShowOwnerID = db.Users.Where(u => u.ASPNetIdentityID == IdentityID).First().ID
                     };
                     db.Shows.Add(newShow);
                     User_Show user_Show = new User_Show
@@ -203,8 +218,8 @@ namespace Harmony
                     db.User_Show.Add(user_Show);
                     db.SaveChanges();
                 }
-                
-                return RedirectToAction("MusicianDetails", new { id = model.ID});
+
+                return RedirectToAction("MusicianDetails", new { id = model.ID });
             }
             return View(model);
         }

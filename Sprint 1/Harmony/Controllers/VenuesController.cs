@@ -53,7 +53,7 @@ namespace Harmony
             var token = await dataStore.GetAsync<TokenResponse>(userId);
             return new UserCredential(flow, userId, token);
         }
-        
+
         // GET: Venues
         public ActionResult Index()
         {
@@ -83,6 +83,23 @@ namespace Harmony
 
             VenueOwnerDetailViewModel viewModel = new VenueOwnerDetailViewModel(venue);
             viewModel.UpcomingShows = db.User_Show.Where(u => u.VenueOwnerID == venue.UserID).Select(s => s.Show).Where(s => s.StartDateTime > DateTime.Now && s.Status == "Accepted").OrderByDescending(s => s.EndDateTime).ToList();
+
+            User user = db.Users.Find(identityID);
+
+            string profilePath = "";
+            if (user.ProfilePictureID == 1)
+            {
+                profilePath = "/Profiles/male.jpg";
+            }
+            else if (user.ProfilePictureID == 2)
+            {
+                profilePath = "/Profiles/female.jpg";
+            }
+            else if (user.ProfilePictureID == 3)
+            {
+                profilePath = "/Profiles/nonbinary.jpg";
+            }
+            ViewBag.ProfilePath = profilePath;
 
             return View(viewModel);
         }
@@ -179,7 +196,7 @@ namespace Harmony
 
                 }
 
-                return RedirectToAction("Details", new { id = model.ID});
+                return RedirectToAction("Details", new { id = model.ID });
             }
 
             return View(model);
